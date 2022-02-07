@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name_user: MyString
-  password: MyString
+  profile: one
+  unit: one
 
 two:
-  name_user: MyString
-  password: MyString
+  profile: two
+  unit: two
