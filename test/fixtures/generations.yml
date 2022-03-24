@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  num_gen: MyString
+  period: 2022-03-20 08:52:11
+  modalidad: 1
+
+two:
+  num_gen: MyString
+  period: 2022-03-20 08:52:11
+  modalidad: 1

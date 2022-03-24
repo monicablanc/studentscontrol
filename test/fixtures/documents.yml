@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  certificado_sec: 
+  acta_nac: 
+  curp: 
+  carta_cond: 
+  comprobante_dom: 
+
+two:
+  certificado_sec: 
+  acta_nac: 
+  curp: 
+  carta_cond: 
+  comprobante_dom: 
