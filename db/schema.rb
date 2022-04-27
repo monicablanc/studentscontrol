@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_22_212717) do
+ActiveRecord::Schema.define(version: 2022_04_26_155348) do
 
   create_table "generations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "num_gen"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2022_03_22_212717) do
     t.string "name_state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "Clave", limit: 2
   end
 
   create_table "students", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -93,6 +94,10 @@ ActiveRecord::Schema.define(version: 2022_03_22_212717) do
     t.bigint "generation_id", null: false
     t.string "ClaveCurp", limit: 18
     t.integer "num_control", null: false
+    t.boolean "reglamento"
+    t.integer "grade"
+    t.boolean "lowt"
+    t.boolean "lowd"
     t.index ["generation_id"], name: "index_students_on_generation_id"
     t.index ["num_control"], name: "index_students_on_num_control"
   end
