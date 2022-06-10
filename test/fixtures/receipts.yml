@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  folio: 1
+  name_receipt: MyString
+  grade_concept: MyString
+  grupo: MyString
+
+two:
+  folio: 1
+  name_receipt: MyString
+  grade_concept: MyString
+  grupo: MyString

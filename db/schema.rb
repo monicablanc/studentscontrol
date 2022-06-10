@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_22_211408) do
+ActiveRecord::Schema.define(version: 2022_06_10_164804) do
+
+  create_table "charges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name_concept"
+    t.string "grade_concept"
+    t.integer "cantidad"
+    t.decimal "cost", precision: 16, scale: 2
+    t.decimal "saldo", precision: 16, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "student_id", null: false
+    t.bigint "concept_id", null: false
+    t.index ["concept_id"], name: "index_charges_on_concept_id"
+    t.index ["student_id"], name: "index_charges_on_student_id"
+  end
+
+  create_table "concepts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name_concept"
+    t.decimal "cost_concept", precision: 16, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "generations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "num_gen"
@@ -19,6 +40,20 @@ ActiveRecord::Schema.define(version: 2022_05_22_211408) do
     t.integer "modalidad"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "payments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name_concept"
+    t.string "grade_concept"
+    t.decimal "monto", precision: 16, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "receipt_id", null: false
+    t.bigint "charge_id", null: false
+    t.bigint "concept_id", null: false
+    t.index ["charge_id"], name: "index_payments_on_charge_id"
+    t.index ["concept_id"], name: "index_payments_on_concept_id"
+    t.index ["receipt_id"], name: "index_payments_on_receipt_id"
   end
 
   create_table "profile_units", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -44,6 +79,18 @@ ActiveRecord::Schema.define(version: 2022_05_22_211408) do
     t.bigint "generation_id", null: false
     t.index ["generation_id"], name: "index_re_entries_on_generation_id"
     t.index ["student_id"], name: "index_re_entries_on_student_id"
+  end
+
+  create_table "receipts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "folio"
+    t.string "name_receipt"
+    t.string "grade_concept"
+    t.string "grupo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "student_id", null: false
+    t.index ["folio"], name: "index_receipts_on_folio"
+    t.index ["student_id"], name: "index_receipts_on_student_id"
   end
 
   create_table "states", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -136,10 +183,16 @@ ActiveRecord::Schema.define(version: 2022_05_22_211408) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "charges", "concepts"
+  add_foreign_key "charges", "students"
+  add_foreign_key "payments", "charges"
+  add_foreign_key "payments", "concepts"
+  add_foreign_key "payments", "receipts"
   add_foreign_key "profile_units", "profiles"
   add_foreign_key "profile_units", "units"
   add_foreign_key "re_entries", "generations"
   add_foreign_key "re_entries", "students"
+  add_foreign_key "receipts", "students"
   add_foreign_key "students", "generations"
   add_foreign_key "user_profiles", "profiles"
   add_foreign_key "user_profiles", "users"
