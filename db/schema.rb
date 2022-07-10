@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_13_044232) do
+ActiveRecord::Schema.define(version: 2022_07_10_215934) do
 
   create_table "charges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name_concept"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2022_06_13_044232) do
     t.bigint "receipt_id", null: false
     t.bigint "charge_id", null: false
     t.bigint "concept_id", null: false
+    t.string "pago_abono"
     t.index ["charge_id"], name: "index_payments_on_charge_id"
     t.index ["concept_id"], name: "index_payments_on_concept_id"
     t.index ["receipt_id"], name: "index_payments_on_receipt_id"
