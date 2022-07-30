@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_20_050242) do
+ActiveRecord::Schema.define(version: 2022_07_30_132204) do
 
   create_table "charges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name_concept"
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(version: 2022_07_20_050242) do
     t.date "fecha_domicilio"
     t.date "fecha_reglamento"
     t.string "matricula"
+    t.boolean "reinscrito"
     t.index ["generation_id"], name: "index_students_on_generation_id"
     t.index ["num_control"], name: "index_students_on_num_control"
   end
