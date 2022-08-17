@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_30_132204) do
+ActiveRecord::Schema.define(version: 2022_08_17_001226) do
 
   create_table "charges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name_concept"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2022_07_30_132204) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "student_id", null: false
+    t.string "estatus"
     t.index ["folio"], name: "index_receipts_on_folio"
     t.index ["student_id"], name: "index_receipts_on_student_id"
   end
