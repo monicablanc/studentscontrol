@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_17_001226) do
+ActiveRecord::Schema.define(version: 2022_08_21_014626) do
 
   create_table "charges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name_concept"
@@ -71,6 +71,28 @@ ActiveRecord::Schema.define(version: 2022_08_17_001226) do
     t.string "name_profile"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ratings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "grade"
+    t.string "grupo"
+    t.integer "eval1"
+    t.integer "eval2"
+    t.integer "eval3"
+    t.decimal "puntaje", precision: 10
+    t.decimal "promedio", precision: 10
+    t.integer "extr1"
+    t.integer "extr2"
+    t.integer "extr3"
+    t.boolean "egresado"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "student_id", null: false
+    t.bigint "subject_id", null: false
+    t.bigint "teacher_id", null: false
+    t.index ["student_id"], name: "index_ratings_on_student_id"
+    t.index ["subject_id"], name: "index_ratings_on_subject_id"
+    t.index ["teacher_id"], name: "index_ratings_on_teacher_id"
   end
 
   create_table "re_entries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -166,6 +188,26 @@ ActiveRecord::Schema.define(version: 2022_08_17_001226) do
     t.index ["num_control"], name: "index_students_on_num_control"
   end
 
+  create_table "subjects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name_subject"
+    t.integer "grade"
+    t.string "clave"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "teachers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name_teacher"
+    t.integer "grade"
+    t.string "grupo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "subject_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["subject_id"], name: "index_teachers_on_subject_id"
+    t.index ["user_id"], name: "index_teachers_on_user_id"
+  end
+
   create_table "units", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name_unit"
     t.integer "parent"
@@ -197,10 +239,15 @@ ActiveRecord::Schema.define(version: 2022_08_17_001226) do
   add_foreign_key "payments", "receipts"
   add_foreign_key "profile_units", "profiles"
   add_foreign_key "profile_units", "units"
+  add_foreign_key "ratings", "students"
+  add_foreign_key "ratings", "subjects"
+  add_foreign_key "ratings", "teachers"
   add_foreign_key "re_entries", "generations"
   add_foreign_key "re_entries", "students"
   add_foreign_key "receipts", "students"
   add_foreign_key "students", "generations"
+  add_foreign_key "teachers", "subjects"
+  add_foreign_key "teachers", "users"
   add_foreign_key "user_profiles", "profiles"
   add_foreign_key "user_profiles", "users"
 end

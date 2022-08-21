@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  grade: 1
+  grupo: MyString
+  eval1: 1
+  eval2: 1
+  eval3: 1
+  puntaje: 9.99
+  promedio: 9.99
+  extr1: 1
+  extr2: 1
+  extr3: 1
+  egresado: false
+
+two:
+  grade: 1
+  grupo: MyString
+  eval1: 1
+  eval2: 1
+  eval3: 1
+  puntaje: 9.99
+  promedio: 9.99
+  extr1: 1
+  extr2: 1
+  extr3: 1
+  egresado: false

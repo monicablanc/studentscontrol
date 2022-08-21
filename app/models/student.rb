@@ -3,4 +3,5 @@ class Student < ApplicationRecord
   has_many :re_entries
   has_many :charges
   has_many :receipts
+  has_many :ratings
 end
