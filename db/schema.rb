@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_30_165355) do
+ActiveRecord::Schema.define(version: 2022_12_29_020841) do
 
   create_table "charges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name_concept"
@@ -32,6 +32,34 @@ ActiveRecord::Schema.define(version: 2022_08_30_165355) do
     t.decimal "cost_concept", precision: 16, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "debits", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "grade_debit"
+    t.decimal "c4", precision: 16, scale: 2
+    t.decimal "c14", precision: 16, scale: 2
+    t.decimal "c24", precision: 16, scale: 2
+    t.decimal "c34", precision: 16, scale: 2
+    t.decimal "c44", precision: 16, scale: 2
+    t.decimal "c54", precision: 16, scale: 2
+    t.decimal "c64", precision: 16, scale: 2
+    t.decimal "c74", precision: 16, scale: 2
+    t.decimal "c84", precision: 16, scale: 2
+    t.decimal "c94", precision: 16, scale: 2
+    t.decimal "c104", precision: 16, scale: 2
+    t.decimal "c114", precision: 16, scale: 2
+    t.decimal "c124", precision: 16, scale: 2
+    t.decimal "c134", precision: 16, scale: 2
+    t.decimal "c154", precision: 16, scale: 2
+    t.decimal "c164", precision: 16, scale: 2
+    t.decimal "c174", precision: 16, scale: 2
+    t.decimal "c184", precision: 16, scale: 2
+    t.decimal "c194", precision: 16, scale: 2
+    t.decimal "c204", precision: 16, scale: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "student_id", null: false
+    t.index ["student_id"], name: "index_debits_on_student_id"
   end
 
   create_table "generations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -235,6 +263,7 @@ ActiveRecord::Schema.define(version: 2022_08_30_165355) do
 
   add_foreign_key "charges", "concepts"
   add_foreign_key "charges", "students"
+  add_foreign_key "debits", "students"
   add_foreign_key "payments", "charges"
   add_foreign_key "payments", "concepts"
   add_foreign_key "payments", "receipts"
