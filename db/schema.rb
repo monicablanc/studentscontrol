@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_15_044424) do
+ActiveRecord::Schema.define(version: 2023_02_15_222340) do
 
   create_table "charges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name_concept"
@@ -222,6 +222,7 @@ ActiveRecord::Schema.define(version: 2023_02_15_044424) do
     t.string "clave"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "low"
   end
 
   create_table "teachers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -260,6 +261,7 @@ ActiveRecord::Schema.define(version: 2023_02_15_044424) do
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "low"
   end
 
   add_foreign_key "charges", "concepts"
