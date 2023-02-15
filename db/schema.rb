@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_29_020841) do
+ActiveRecord::Schema.define(version: 2023_02_15_044424) do
 
   create_table "charges", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name_concept"
@@ -233,6 +233,7 @@ ActiveRecord::Schema.define(version: 2022_12_29_020841) do
     t.bigint "subject_id", null: false
     t.bigint "user_id", null: false
     t.integer "modalidad"
+    t.boolean "low"
     t.index ["subject_id"], name: "index_teachers_on_subject_id"
     t.index ["user_id"], name: "index_teachers_on_user_id"
   end
